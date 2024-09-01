@@ -4,6 +4,7 @@ locals {
   // Extract the service account ID
   service_account_id = local.service_account.id
 }
+
 resource "google_service_account" "vault_gcp_sa" {
   count = var.create_service_account ? 1 : 0
   account_id   = var.service_account_id
