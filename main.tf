@@ -7,8 +7,7 @@ locals {
 
 # Note: This requires the Terraform to be run regularly
 resource "time_rotating" "key_rotation" {
-  // Rotate the key every 30 days
-  rotation_days = 30
+  rotation_days = var.key_rotation
 }
 
 resource "google_service_account_key" "vault_gcp_sa_key" {
