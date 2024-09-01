@@ -28,8 +28,14 @@ variable "vault_gcp_auth_role_name" {
   type        = string
 }
 
-variable key_rotation {
-  default = 7
-  type = string
+variable "key_rotation" {
+  default     = 7
+  type        = string
   description = "Rotate key ever N number of days"
+}
+
+variable "create_service_account" {
+  description = "Create a new service account or use an existing one."
+  type        = bool
+  default     = true
 }

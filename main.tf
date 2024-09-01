@@ -10,6 +10,20 @@ resource "time_rotating" "key_rotation" {
   rotation_days = var.key_rotation
 }
 
+
+data "google_service_account" "vault_gcp_sa" {
+  count      = var.create_service_account ? 0 : 1
+  account_id = var.service_account_id
+  project    = var.project_id
+}
+
+resource "google_service_account" "vault_gcp_sa" {
+  count        = var.create_service_account ? 1 : 0
+  account_id   = var.service_account_id
+  display_name = var.service_account_display_name
+  project      = var.project_id
+}
+
 resource "google_service_account_key" "vault_gcp_sa_key" {
   // Use the service account ID from the local variable
   service_account_id = local.service_account_id
