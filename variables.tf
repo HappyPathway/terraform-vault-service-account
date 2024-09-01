@@ -27,3 +27,9 @@ variable "vault_gcp_auth_role_name" {
   description = "The name of the role to create in the GCP auth backend."
   type        = string
 }
+
+variable key_rotation {
+  default = 7
+  type = string
+  description = "Rotate key ever N number of days"
+}
