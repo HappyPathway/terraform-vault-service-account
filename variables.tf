@@ -11,11 +11,13 @@ variable "service_account_id" {
 variable "service_account_display_name" {
   description = "The display name of the service account."
   type        = string
+  default = null
 }
 
 variable "iam_roles" {
   description = "A list of IAM roles to attach to the service account."
   type        = list(string)
+default = []
 }
 
 variable "vault_gcp_auth_path" {
