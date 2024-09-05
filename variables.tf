@@ -51,5 +51,5 @@ variable "bound_projects" {
 }
 
 variable "policies" {
-  type = list(string)
+  type = map(string)
 }
