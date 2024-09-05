@@ -54,6 +54,6 @@ resource "vault_gcp_auth_backend_role" "gcp_role" {
   role                   = var.vault_gcp_auth_role_name
   type                   = "iam"
   bound_service_accounts = [local.service_account.email]
-  bound_projects         = var.bind_projec ? concat(var.bound_projects, [var.project_id]) : null
+  bound_projects         = var.bind_project ? concat(var.bound_projects, [var.project_id]) : null
   token_policies         = var.token_policies
 }
