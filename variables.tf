@@ -55,3 +55,8 @@ variable "bound_projects" {
 variable "policies" {
   type = map(string)
 }
+
+variable rotate_key {
+  type = bool
+  default = false
+}
