@@ -8,7 +8,7 @@ locals {
 
 # Note: This requires the Terraform to be run regularly
 resource "time_rotating" "key_rotation" {
-  count = var.rotate_key ? 1 : 0
+  count         = var.rotate_key ? 1 : 0
   rotation_days = var.key_rotation
 }
 

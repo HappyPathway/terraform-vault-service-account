@@ -66,6 +66,7 @@ No modules.
 | <a name="input_key_rotation"></a> [key\_rotation](#input\_key\_rotation) | Rotate key ever N number of days | `string` | `7` | no |
 | <a name="input_policies"></a> [policies](#input\_policies) | n/a | `map(string)` | n/a | yes |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | The ID of the project in which to create the service account. | `string` | n/a | yes |
+| <a name="input_rotate_key"></a> [rotate\_key](#input\_rotate\_key) | n/a | `bool` | `false` | no |
 | <a name="input_service_account_display_name"></a> [service\_account\_display\_name](#input\_service\_account\_display\_name) | The display name of the service account. | `string` | `null` | no |
 | <a name="input_service_account_id"></a> [service\_account\_id](#input\_service\_account\_id) | The ID of the service account to create. | `string` | n/a | yes |
 | <a name="input_vault_gcp_auth_path"></a> [vault\_gcp\_auth\_path](#input\_vault\_gcp\_auth\_path) | The path where the GCP auth backend will be mounted in Vault. | `string` | n/a | yes |

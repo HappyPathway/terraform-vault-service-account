@@ -56,7 +56,7 @@ variable "policies" {
   type = map(string)
 }
 
-variable rotate_key {
-  type = bool
+variable "rotate_key" {
+  type    = bool
   default = false
 }
