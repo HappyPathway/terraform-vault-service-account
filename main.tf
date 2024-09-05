@@ -47,6 +47,12 @@ resource "vault_gcp_auth_backend" "gcp" {
   credentials = google_service_account_key.vault_gcp_sa_key.private_key
 }
 
+resource "vault_policy" "policy" {
+  for_each = tomap(var.policies)
+  name   = each.key
+  policy = file(each.value)
+}
+
 resource "vault_gcp_auth_backend_role" "gcp_role" {
   // Define a role for the Vault GCP auth backend
   backend                = vault_gcp_auth_backend.gcp.path
@@ -54,5 +60,5 @@ resource "vault_gcp_auth_backend_role" "gcp_role" {
   type                   = "iam"
   bound_service_accounts = [local.service_account.email]
   bound_projects         = var.bind_project ? concat(var.bound_projects, [var.project_id]) : null
-  token_policies         = var.token_policies
+  token_policies         = [ for policy in vault_policy.policy : policy.name ]
 }
