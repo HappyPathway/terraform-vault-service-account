@@ -8,6 +8,7 @@ locals {
 
 # Note: This requires the Terraform to be run regularly
 resource "time_rotating" "key_rotation" {
+  count = var.rotate_key ? 1 : 0
   rotation_days = var.key_rotation
 }
 
@@ -28,9 +29,9 @@ resource "google_service_account_key" "vault_gcp_sa_key" {
   // Use the service account ID from the local variable
   service_account_id = local.service_account_id
   // Use the last rotation time as a keeper to force recreation of the key
-  keepers = {
-    last_rotation = time_rotating.key_rotation.rotation_rfc3339
-  }
+  keepers = var.rotate_key ? {
+    last_rotation = one(time_rotating.key_rotation).rotation_rfc3339
+  } : {}
 }
 
 resource "google_project_iam_member" "vault_gcp_sa_iam" {
