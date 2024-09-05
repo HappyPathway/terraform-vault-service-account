@@ -39,3 +39,17 @@ variable "create_service_account" {
   type        = bool
   default     = true
 }
+
+variable "bind_project" {
+  type    = bool
+  default = true
+}
+
+variable "bound_projects" {
+  type    = list(string)
+  default = []
+}
+
+variable "token_policies" {
+  type = list(string)
+}
