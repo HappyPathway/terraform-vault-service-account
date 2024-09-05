@@ -62,11 +62,11 @@ No modules.
 | <a name="input_bind_project"></a> [bind\_project](#input\_bind\_project) | n/a | `bool` | `true` | no |
 | <a name="input_bound_projects"></a> [bound\_projects](#input\_bound\_projects) | n/a | `list(string)` | `[]` | no |
 | <a name="input_create_service_account"></a> [create\_service\_account](#input\_create\_service\_account) | Create a new service account or use an existing one. | `bool` | `true` | no |
-| <a name="input_iam_roles"></a> [iam\_roles](#input\_iam\_roles) | A list of IAM roles to attach to the service account. | `list(string)` | n/a | yes |
+| <a name="input_iam_roles"></a> [iam\_roles](#input\_iam\_roles) | A list of IAM roles to attach to the service account. | `list(string)` | `[]` | no |
 | <a name="input_key_rotation"></a> [key\_rotation](#input\_key\_rotation) | Rotate key ever N number of days | `string` | `7` | no |
 | <a name="input_policies"></a> [policies](#input\_policies) | n/a | `map(string)` | n/a | yes |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | The ID of the project in which to create the service account. | `string` | n/a | yes |
-| <a name="input_service_account_display_name"></a> [service\_account\_display\_name](#input\_service\_account\_display\_name) | The display name of the service account. | `string` | n/a | yes |
+| <a name="input_service_account_display_name"></a> [service\_account\_display\_name](#input\_service\_account\_display\_name) | The display name of the service account. | `string` | `null` | no |
 | <a name="input_service_account_id"></a> [service\_account\_id](#input\_service\_account\_id) | The ID of the service account to create. | `string` | n/a | yes |
 | <a name="input_vault_gcp_auth_path"></a> [vault\_gcp\_auth\_path](#input\_vault\_gcp\_auth\_path) | The path where the GCP auth backend will be mounted in Vault. | `string` | n/a | yes |
 | <a name="input_vault_gcp_auth_role_name"></a> [vault\_gcp\_auth\_role\_name](#input\_vault\_gcp\_auth\_role\_name) | The name of the role to create in the GCP auth backend. | `string` | n/a | yes |
