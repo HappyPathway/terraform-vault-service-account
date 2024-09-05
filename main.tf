@@ -49,8 +49,8 @@ resource "vault_gcp_auth_backend" "gcp" {
 
 resource "vault_policy" "policy" {
   for_each = tomap(var.policies)
-  name   = each.key
-  policy = file(each.value)
+  name     = each.key
+  policy   = file(each.value)
 }
 
 resource "vault_gcp_auth_backend_role" "gcp_role" {
@@ -60,5 +60,5 @@ resource "vault_gcp_auth_backend_role" "gcp_role" {
   type                   = "iam"
   bound_service_accounts = [local.service_account.email]
   bound_projects         = var.bind_project ? concat(var.bound_projects, [var.project_id]) : null
-  token_policies         = [ for policy in vault_policy.policy : policy.name ]
+  token_policies         = [for policy in vault_policy.policy : policy.name]
 }

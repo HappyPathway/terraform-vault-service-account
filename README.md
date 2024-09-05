@@ -52,6 +52,7 @@ No modules.
 | [time_rotating.key_rotation](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/rotating) | resource |
 | [vault_gcp_auth_backend.gcp](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/gcp_auth_backend) | resource |
 | [vault_gcp_auth_backend_role.gcp_role](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/gcp_auth_backend_role) | resource |
+| [vault_policy.policy](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
 | [google_service_account.vault_gcp_sa](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/service_account) | data source |
 
 ## Inputs
@@ -63,10 +64,10 @@ No modules.
 | <a name="input_create_service_account"></a> [create\_service\_account](#input\_create\_service\_account) | Create a new service account or use an existing one. | `bool` | `true` | no |
 | <a name="input_iam_roles"></a> [iam\_roles](#input\_iam\_roles) | A list of IAM roles to attach to the service account. | `list(string)` | n/a | yes |
 | <a name="input_key_rotation"></a> [key\_rotation](#input\_key\_rotation) | Rotate key ever N number of days | `string` | `7` | no |
+| <a name="input_policies"></a> [policies](#input\_policies) | n/a | `map(string)` | n/a | yes |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | The ID of the project in which to create the service account. | `string` | n/a | yes |
 | <a name="input_service_account_display_name"></a> [service\_account\_display\_name](#input\_service\_account\_display\_name) | The display name of the service account. | `string` | n/a | yes |
 | <a name="input_service_account_id"></a> [service\_account\_id](#input\_service\_account\_id) | The ID of the service account to create. | `string` | n/a | yes |
-| <a name="input_token_policies"></a> [token\_policies](#input\_token\_policies) | n/a | `list(string)` | n/a | yes |
 | <a name="input_vault_gcp_auth_path"></a> [vault\_gcp\_auth\_path](#input\_vault\_gcp\_auth\_path) | The path where the GCP auth backend will be mounted in Vault. | `string` | n/a | yes |
 | <a name="input_vault_gcp_auth_role_name"></a> [vault\_gcp\_auth\_role\_name](#input\_vault\_gcp\_auth\_role\_name) | The name of the role to create in the GCP auth backend. | `string` | n/a | yes |
 
