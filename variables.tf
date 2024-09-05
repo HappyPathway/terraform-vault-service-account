@@ -50,6 +50,6 @@ variable "bound_projects" {
   default = []
 }
 
-variable "token_policies" {
+variable "policies" {
   type = list(string)
 }
