@@ -28,13 +28,15 @@ It defines a role for the Vault GCP authentication backend, binding it to specif
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_google"></a> [google](#requirement\_google) | ~> 6.1.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 6.0.1 |
+| <a name="provider_google"></a> [google](#provider\_google) | 6.1.0 |
 | <a name="provider_time"></a> [time](#provider\_time) | 0.12.0 |
 | <a name="provider_vault"></a> [vault](#provider\_vault) | 4.4.0 |
 
