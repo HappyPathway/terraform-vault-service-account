@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    mycloud = {
+      source  = "hashicorp/google"
+      version = "~> 6.1.0"
+    }
+  }
+}
 
 locals {
   // Determine the service account to use based on the variable 'create_service_account'
