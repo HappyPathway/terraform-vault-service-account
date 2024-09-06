@@ -50,7 +50,7 @@ resource "vault_gcp_auth_backend" "gcp" {
 resource "vault_policy" "policy" {
   for_each = tomap(var.policies)
   name     = each.key
-  policy   = file(each.value)
+  policy   = each.value
 }
 
 resource "vault_gcp_auth_backend_role" "gcp_role" {
