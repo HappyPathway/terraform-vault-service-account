@@ -1,7 +1,7 @@
 
 locals {
   // Determine the service account to use based on the variable 'create_service_account'
-  service_account = var.create_service_account ? one(google_service_account.vault_gcp_sa) : data.google_service_account.vault_gcp_sa
+  service_account = var.create_service_account ? one(google_service_account.vault_gcp_sa) : one(data.google_service_account).vault_gcp_sa
   // Extract the service account ID
   service_account_id = local.service_account.id
 }
