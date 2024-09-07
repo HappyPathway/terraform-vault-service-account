@@ -61,12 +61,12 @@ variable "rotate_key" {
   default = false
 }
 
-variable allowed_service_accounts {
-  type = list(string)
+variable "allowed_service_accounts" {
+  type    = list(string)
   default = []
 }
 
-variable gcp_auth_type {
+variable "gcp_auth_type" {
   default = "iam"
-  type = string
+  type    = string
 }
