@@ -60,3 +60,8 @@ variable "rotate_key" {
   type    = bool
   default = false
 }
+
+variable allowed_service_accounts {
+  type = list(string)
+  default = []
+}
