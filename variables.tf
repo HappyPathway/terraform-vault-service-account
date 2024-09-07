@@ -65,3 +65,8 @@ variable allowed_service_accounts {
   type = list(string)
   default = []
 }
+
+variable gcp_auth_type {
+  default = "iam"
+  type = string
+}
