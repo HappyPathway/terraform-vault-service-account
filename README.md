@@ -61,9 +61,11 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_allowed_service_accounts"></a> [allowed\_service\_accounts](#input\_allowed\_service\_accounts) | n/a | `list(string)` | `[]` | no |
 | <a name="input_bind_project"></a> [bind\_project](#input\_bind\_project) | n/a | `bool` | `true` | no |
 | <a name="input_bound_projects"></a> [bound\_projects](#input\_bound\_projects) | n/a | `list(string)` | `[]` | no |
 | <a name="input_create_service_account"></a> [create\_service\_account](#input\_create\_service\_account) | Create a new service account or use an existing one. | `bool` | `true` | no |
+| <a name="input_gcp_auth_type"></a> [gcp\_auth\_type](#input\_gcp\_auth\_type) | n/a | `string` | `"iam"` | no |
 | <a name="input_iam_roles"></a> [iam\_roles](#input\_iam\_roles) | A list of IAM roles to attach to the service account. | `list(string)` | `[]` | no |
 | <a name="input_key_rotation"></a> [key\_rotation](#input\_key\_rotation) | Rotate key ever N number of days | `string` | `7` | no |
 | <a name="input_policies"></a> [policies](#input\_policies) | n/a | `map(string)` | n/a | yes |

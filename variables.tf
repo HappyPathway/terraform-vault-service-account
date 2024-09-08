@@ -66,3 +66,25 @@ variable "create_service_account" {
   type        = bool
   default     = false
 }
+
+variable "allowed_service_accounts" {
+  type    = list(string)
+  default = []
+}
+
+variable "gcp_auth_type" {
+  default = "iam"
+  type    = string
+}
+
+variable "allow_gce_inference" {
+  description = "Flag to allow GCE inference"
+  type        = bool
+  default     = false # or true, based on your decision
+}
+
+variable "max_jwt_exp" {
+  description = "Maximum JWT expiration time in seconds"
+  type        = number
+  default     = 3600 # 1 hour
+}
