@@ -33,7 +33,7 @@ resource "google_service_account_key" "vault_gcp_validator_key" {
   } : {}
 }
 
-resource "google_iam_custom_role" "vault_gcp_validator_validator_role" {
+resource "google_project_iam_custom_role" "vault_gcp_validator_validator_role" {
   count       = var.create_service_account || var.add_jwt_validotor_permissions ? 1 : 0
   role_id     = "vault_gcp_validator_validator_role"
   title       = "Vault GCP SA Custom Role"
@@ -49,7 +49,7 @@ resource "google_iam_custom_role" "vault_gcp_validator_validator_role" {
 resource "google_project_iam_member" "vault_gcp_validator_iam" {
   count   = var.create_service_account ? 1 : 0
   project = var.project_id
-  role    = vault_gcp_validator_validator_role
+  role    = one(google_project_iam_custom_role.vault_gcp_validator_validator_role).id
   member  = "serviceAccount:${local.service_account.email}"
 }
 
@@ -65,8 +65,10 @@ resource "vault_policy" "policy" {
   policy   = each.value
 }
 
-resource "vault_gcp_auth_backend_role" "gcp_role" {
-  // Define a role for the Vault GCP auth backend
+resource "vault_gcp_auth_backend_role" "gcp_iam_role" {
+  max_jwt_exp            = var.max_jwt_exp
+  allow_gce_inference    = var.allow_gce_inference
+  count                  = var.gcp_auth_type == "iam" ? 1 : 0
   backend                = vault_gcp_auth_backend.gcp.path
   role                   = var.vault_gcp_auth_role_name
   type                   = var.gcp_auth_type # default: iam
@@ -76,12 +78,17 @@ resource "vault_gcp_auth_backend_role" "gcp_role" {
 }
 
 
-resource "vault_gcp_auth_backend_role" "gcp_role" {
+resource "vault_gcp_auth_backend_role" "gcp_gce_role" {
   // Define a role for the Vault GCP auth backend
+  count                  = var.gcp_auth_type == "gce" ? 1 : 0
   backend                = vault_gcp_auth_backend.gcp.path
   role                   = var.vault_gcp_auth_role_name
-  type                   = "iam"
+  type                   = "gce"
   bound_service_accounts = [local.service_account.email]
   bound_projects         = var.bind_project ? concat(var.bound_projects, [var.project_id]) : null
   token_policies         = [for policy in vault_policy.policy : policy.name]
+  bound_zones            = var.bound_zones
+  bound_regions          = var.bound_regions
+  bound_instance_groups  = var.bound_instance_groups
+  bound_labels           = toset(var.bound_labels)
 }

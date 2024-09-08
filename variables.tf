@@ -88,3 +88,27 @@ variable "max_jwt_exp" {
   type        = number
   default     = 3600 # 1 hour
 }
+
+variable "bound_zones" {
+  description = "List of zones to bind"
+  type        = list(string)
+  default     = []
+}
+
+variable "bound_regions" {
+  description = "List of regions to bind"
+  type        = list(string)
+  default     = []
+}
+
+variable "bound_instance_groups" {
+  description = "List of instance groups to bind"
+  type        = list(string)
+  default     = []
+}
+
+variable "bound_labels" {
+  description = "Map of labels to bind"
+  type        = list(string)
+  default     = []
+}
