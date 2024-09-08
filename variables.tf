@@ -3,12 +3,12 @@ variable "project_id" {
   type        = string
 }
 
-variable "service_account_id" {
+variable "vault_jwt_validation_service_account_id" {
   description = "The ID of the service account to create."
   type        = string
 }
 
-variable "service_account_display_name" {
+variable "vault_jwt_validation_service_account_display_name" {
   description = "The display name of the service account."
   type        = string
   default     = null
@@ -36,11 +36,6 @@ variable "key_rotation" {
   description = "Rotate key ever N number of days"
 }
 
-variable "create_service_account" {
-  description = "Create a new service account or use an existing one."
-  type        = bool
-  default     = true
-}
 
 variable "bind_project" {
   type    = bool
@@ -59,4 +54,15 @@ variable "policies" {
 variable "rotate_key" {
   type    = bool
   default = false
+}
+
+variable "add_jwt_validotor_permissions" {
+  type    = bool
+  default = false
+}
+
+variable "create_service_account" {
+  description = "Create a new service account or use an existing one."
+  type        = bool
+  default     = false
 }
